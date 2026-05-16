@@ -1,0 +1,144 @@
+{
+  "entities": {
+    "Promotion": {
+      "title": "Promotion",
+      "description": "Travel promotions and popular destinations",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "type": { "type": "string", "enum": ["flight", "hotel", "package"] },
+        "featured": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "imageUrl", "type"]
+    },
+    "ContactRequest": {
+      "title": "Contact Request",
+      "description": "Inquiries from users",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "lineId": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "contacted", "closed"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "phone", "message"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "Agency services description",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "icon": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["name", "description"]
+    },
+    "HeroSlide": {
+      "title": "Hero Slide",
+      "description": "Slides for the hero section",
+      "type": "object",
+      "properties": {
+        "image": { "type": "string" },
+        "title": { "type": "string" },
+        "accent": { "type": "string" },
+        "order": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["image", "title", "accent"]
+    },
+    "Package": {
+      "title": "Package",
+      "description": "Travel packages (Flight + Hotel)",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "duration": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "price", "imageUrl"]
+    },
+    "FlightBooking": {
+      "title": "Flight Booking",
+      "description": "Customer flight booking records",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string" },
+        "origin": { "type": "string" },
+        "destination": { "type": "string" },
+        "date": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "issued", "cancelled"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "HotelBooking": {
+      "title": "Hotel Booking",
+      "description": "Customer hotel booking records",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string" },
+        "hotelName": { "type": "string" },
+        "checkIn": { "type": "string" },
+        "checkOut": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "cancelled"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "SiteConfig": {
+      "title": "Site Configuration",
+      "description": "Global website settings",
+      "type": "object",
+      "properties": {
+        "siteName": { "type": "string" },
+        "siteAccent": { "type": "string" },
+        "logoText": { "type": "string" },
+        "phone": { "type": "string" },
+        "lineId": { "type": "string" },
+        "email": { "type": "string" },
+        "address": { "type": "string" },
+        "tatNo": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "packages": {
+      "schema": "Package",
+      "description": "List of available travel packages"
+    },
+    "flight_bookings": {
+      "schema": "FlightBooking",
+      "description": "Customer flight booking management"
+    },
+    "hotel_bookings": {
+      "schema": "HotelBooking",
+      "description": "Customer hotel booking management"
+    },
+    "contact_requests": {
+      "schema": "ContactRequest",
+      "description": "User inquiries for travel planning"
+    },
+    "services": {
+      "schema": "Service",
+      "description": "Details of services offered by the agency"
+    },
+    "settings": {
+      "schema": "SiteConfig",
+      "description": "Global website configuration"
+    },
+    "slides": {
+      "schema": "HeroSlide",
+      "description": "Banner slides for homepage"
+    }
+  }
+}

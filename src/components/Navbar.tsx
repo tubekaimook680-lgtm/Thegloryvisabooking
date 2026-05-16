@@ -1,0 +1,131 @@
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Plane, Hotel, Menu, X, PhoneCall } from 'lucide-react';
+import { cn } from '../lib/utils';
+import { useSettings } from '../lib/useSettings';
+
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { settings } = useSettings();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Home', href: '#' },
+    { name: 'About Us', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Packages', href: '#promotions' },
+    { name: 'Contact', href: '#contact' },
+  ];
+
+  return (
+    <nav
+      className={cn(
+        'fixed top-0 left-0 z-50 w-full transition-all duration-300',
+        isScrolled ? 'bg-white/95 border-b border-slate-100 py-3 shadow-sm backdrop-blur-md' : 'bg-transparent py-5'
+      )}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8">
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 font-bold text-white shadow-lg transition-transform group-hover:scale-105">
+            {settings.logoText}
+          </div>
+          <div className="flex flex-col leading-tight">
+            <span className={cn(
+              "text-xl font-black uppercase tracking-tight transition-colors",
+              isScrolled ? "text-slate-900" : "text-white"
+            )}>
+              {settings.siteName}
+            </span>
+            <span className={cn(
+              "text-[10px] font-bold uppercase tracking-widest transition-colors",
+              isScrolled ? "text-slate-400" : "text-white/70"
+            )}>{settings.siteAccent}</span>
+          </div>
+        </Link>
+
+        {/* Desktop Links */}
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className={cn(
+                "text-sm font-bold transition-all relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full",
+                isScrolled ? "text-slate-600 hover:text-blue-600" : "text-white/90 hover:text-white"
+              )}
+            >
+              {link.name}
+            </a>
+          ))}
+          <div className={cn(
+            "flex items-center gap-4 border-l pl-8",
+            isScrolled ? "border-slate-100" : "border-white/20"
+          )}>
+            <a href={`tel:${settings.phone}`} className={cn(
+              "flex items-center gap-2 text-sm font-black transition-colors",
+              isScrolled ? "text-blue-600" : "text-white"
+            )}>
+              <PhoneCall size={16} />
+              {settings.phone}
+            </a>
+            <Link
+              to="/admin/login"
+              className={cn(
+                "rounded-full px-6 py-2.5 text-[11px] font-extrabold transition-all uppercase tracking-wider",
+                isScrolled ? "bg-slate-100 text-slate-900 hover:bg-slate-200" : "bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm"
+              )}
+            >
+              ADMIN
+            </Link>
+          </div>
+        </div>
+
+        {/* Mobile Toggle */}
+        <button
+          className={cn(
+            "rounded-lg p-2 md:hidden transition-colors",
+            isScrolled ? "text-slate-900" : "text-white"
+          )}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-0 left-0 h-screen w-full bg-white p-8 md:hidden">
+          <div className="flex justify-end">
+            <button onClick={() => setIsMobileMenuOpen(false)}>
+              <X size={32} />
+            </button>
+          </div>
+          <div className="mt-12 flex flex-col gap-6 text-center">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-2xl font-bold text-slate-900"
+              >
+                {link.name}
+              </a>
+            ))}
+            <hr />
+            <a href={`tel:${settings.phone}`} className="text-xl font-bold text-blue-600">
+              {settings.phone}
+            </a>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+}

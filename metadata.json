@@ -1,0 +1,8 @@
+{
+  "name": "iBookingMaster",
+  "description": "Professional 24/7 flight and hotel booking agency with comprehensive travel support services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
