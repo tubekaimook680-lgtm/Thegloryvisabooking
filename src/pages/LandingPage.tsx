@@ -5,10 +5,12 @@ import ServiceBanner from '../components/ServiceBanner';
 import WhyChooseUs from '../components/WhyChooseUs';
 import Promotions from '../components/Promotions';
 import ServicesSection from '../components/ServicesSection';
+import BookingShowcase from '../components/BookingShowcase';
 import CompanyCert from '../components/CompanyCert';
 import Branches from '../components/Branches';
 import VideoReviews from '../components/VideoReviews';
 import Testimonials from '../components/Testimonials';
+import FAQSection from '../components/FAQSection';
 import Footer from '../components/Footer';
 import ContactSection from '../components/ContactSection';
 import ChatWidget from '../components/ChatWidget';
@@ -23,6 +25,7 @@ export default function LandingPage() {
       <main>
         <Hero />
         <ServicesSection />
+        <BookingShowcase />
         <ServiceBanner />
         <WhyChooseUs />
         <Promotions />
@@ -30,6 +33,7 @@ export default function LandingPage() {
         <Branches />
         <VideoReviews />
         <Testimonials />
+        <FAQSection />
         <ContactSection />
       </main>
       <Footer />
@@ -38,12 +42,13 @@ export default function LandingPage() {
       <ChatWidget />
       
       <a
-        href={settings.lineUrl || "https://line.me"}
+        href={settings.lineUrl || `https://line.me/ti/p/${settings.lineId?.replace('@', '') || ''}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-white shadow-2xl transition-transform hover:scale-110 active:scale-95"
+        className="fixed bottom-8 right-8 z-50 flex items-center gap-3 rounded-full bg-[#06C755] px-6 py-4 text-white shadow-2xl transition-all hover:scale-105 active:scale-95 group"
       >
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="Line" className="h-10 w-10 invert brightness-0" />
+        <img src="https://thegloryworldvisatravel.com/wp-content/uploads/2026/05/LINE_New_App_Icon_2020-12.png" alt="Line" className="h-6 w-6" />
+        <span className="font-black text-sm whitespace-nowrap">ปรึกษาเราฟรี!</span>
       </a>
     </div>
   );

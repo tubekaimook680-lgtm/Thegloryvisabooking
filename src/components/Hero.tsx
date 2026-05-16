@@ -105,7 +105,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="px-10 py-4 bg-blue-600 text-white font-black rounded-xl shadow-2xl transition-all hover:bg-blue-700 hover:translate-y-[-2px] flex items-center gap-2"
             >
-              LINE ID: {settings.lineId}
+              ปรึกษาเราฟรี!
             </a>
           </div>
         </motion.div>

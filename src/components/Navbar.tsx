@@ -33,21 +33,25 @@ export default function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 font-bold text-white shadow-lg transition-transform group-hover:scale-105">
-            {settings.logoText}
-          </div>
+        <Link to="/" className="flex items-center gap-3 group">
+          <img 
+            src="https://thegloryworldvisatravel.com/wp-content/uploads/2025/03/logo.png" 
+            alt={settings.siteName} 
+            className={cn(
+              "h-10 md:h-12 w-auto border-r border-slate-200 pr-3 object-contain transition-transform group-hover:scale-105"
+            )}
+          />
           <div className="flex flex-col leading-tight">
             <span className={cn(
-              "text-xl font-black uppercase tracking-tight transition-colors",
-              isScrolled ? "text-slate-900" : "text-white"
+              "text-base md:text-lg font-black uppercase tracking-tight transition-colors text-slate-900"
             )}>
               {settings.siteName}
             </span>
             <span className={cn(
-              "text-[10px] font-bold uppercase tracking-widest transition-colors",
-              isScrolled ? "text-slate-400" : "text-white/70"
-            )}>{settings.siteAccent}</span>
+              "text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] transition-colors text-blue-600"
+            )}>
+              {settings.siteAccent}
+            </span>
           </div>
         </Link>
 

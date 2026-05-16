@@ -53,11 +53,11 @@ export default function ContactSection() {
                 className="flex items-center gap-6 rounded-[32px] bg-blue-600 p-6 text-white shadow-2xl shadow-blue-200 transition-all hover:bg-blue-700 hover:translate-y-[-2px]"
               >
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 border border-white/30 backdrop-blur-sm">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="Line" className="h-10 w-10 invert brightness-0" />
+                  <img src="https://thegloryworldvisatravel.com/wp-content/uploads/2026/05/LINE_New_App_Icon_2020-12.png" alt="Line" className="h-10 w-10" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-black uppercase tracking-tight">LINE ID: {settings.lineId}</h4>
-                  <p className="text-sm font-bold opacity-80 uppercase tracking-widest">Add friend for free consultation</p>
+                  <h4 className="text-xl font-black uppercase tracking-tight">ปรึกษาเราฟรี!</h4>
+                  <p className="text-sm font-bold opacity-80 uppercase tracking-widest">{settings.lineId}</p>
                 </div>
               </a>
               

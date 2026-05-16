@@ -5,7 +5,6 @@ import {
   FileCheck, 
   Clock, 
   ShieldCheck, 
-  PlaneTakeoff, 
   BookOpen, 
   Users 
 } from 'lucide-react';
@@ -53,12 +52,6 @@ const SERVICES = [
     title: 'Travel Insurance',
     description: 'บริการซื้อประกันการเดินทางที่ตรงตามข้อกำหนดของสถานทูต เพื่อความคุ้มครองสูงสุดและเป็นหลักประกันในการยื่นวีซ่า',
     color: 'rose'
-  },
-  {
-    icon: PlaneTakeoff,
-    title: 'Flight & Hotel Booking',
-    description: 'บริการจองตั๋วเครื่องบินและโรงแรมเพื่อใช้ประกอบการยื่นวีซ่า โดยไม่ต้องชำระเงินจริงในบางกรณี เพื่อเซฟต้นทุนของคุณ',
-    color: 'amber'
   }
 ];
 
@@ -114,7 +107,6 @@ export default function ServicesSection() {
                 service.color === 'teal' && "bg-teal-50 text-teal-600",
                 service.color === 'emerald' && "bg-emerald-50 text-emerald-600",
                 service.color === 'rose' && "bg-rose-50 text-rose-600",
-                service.color === 'amber' && "bg-amber-50 text-amber-600",
               )}>
                 <service.icon size={30} strokeWidth={2.5} />
               </div>
