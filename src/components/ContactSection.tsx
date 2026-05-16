@@ -68,7 +68,7 @@ export default function ContactSection() {
                 </div>
                 <div className="rounded-2xl bg-white p-6 shadow-sm border border-slate-100 flex flex-col">
                   <h5 className="font-black text-xs uppercase tracking-widest text-slate-400 mb-1">Email</h5>
-                  <p className="text-lg font-black text-slate-900 leading-none">{settings.email}</p>
+                  <p className="text-base sm:text-lg font-black text-slate-900 leading-none break-all">{settings.email}</p>
                 </div>
               </div>
             </div>

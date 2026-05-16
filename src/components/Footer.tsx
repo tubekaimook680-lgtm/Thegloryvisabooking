@@ -10,11 +10,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="col-span-1 lg:col-span-1">
             <div className="flex items-center gap-2">
-              <img 
-                src="https://thegloryworldvisatravel.com/wp-content/uploads/2025/03/logo.png" 
-                alt={settings.siteName} 
-                className="h-10 md:h-12 w-auto object-contain"
-              />
+              <span className="text-xl font-black text-black">The Glory World Visa</span>
             </div>
             <p className="mt-6 text-base leading-relaxed text-slate-500 italic">
               Professional travel agency with comprehensive support. 

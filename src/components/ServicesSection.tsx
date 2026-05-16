@@ -72,10 +72,10 @@ export default function ServicesSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-6xl font-black text-slate-900 leading-tight"
+              className="text-2xl sm:text-4xl md:text-6xl font-black text-slate-900 leading-tight"
             >
               บริการที่ครอบคลุม <br/>
-              <span className="text-blue-600 whitespace-nowrap">เพื่อทุกการเดินทางของคุณ</span>
+              <span className="text-blue-600 sm:whitespace-nowrap">เพื่อทุกการเดินทางของคุณ</span>
             </motion.h2 >
           </div>
           <motion.div 

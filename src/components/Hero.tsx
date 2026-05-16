@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Plane, Hotel, Search, Calendar, MapPin, Users, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect, useMemo } from 'react';
+import { Plane, Hotel, Search, Calendar, MapPin, Users, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { cn } from '../lib/utils';
 import { useSettings } from '../lib/useSettings';
+import { promos } from '../data/promos';
 
 const DEFAULT_SLIDES = [
   {
@@ -28,6 +29,10 @@ export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slides, setSlides] = useState<any[]>(DEFAULT_SLIDES);
   const { settings } = useSettings();
+
+  const randomPromo = useMemo(() => {
+    return promos[Math.floor(Math.random() * promos.length)];
+  }, []);
 
   useEffect(() => {
     const q = query(collection(db, 'slides'), orderBy('order', 'asc'));
@@ -88,52 +93,110 @@ export default function Hero() {
           <span className="mb-4 inline-block rounded-full bg-blue-500/20 px-3 py-1 text-[11px] font-black uppercase tracking-widest text-blue-300 border border-blue-500/30 backdrop-blur-md">
             🌏 {slides[currentSlide].title}
           </span>
-          <h1 className="text-5xl font-black leading-tight text-white md:text-7xl drop-shadow-2xl">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black leading-tight text-white drop-shadow-2xl">
             {slides[currentSlide].accent} <br/><span className="text-blue-400">ไปกับผู้เชี่ยวชาญตัวจริง</span>
           </h1>
-          <p className="mt-6 text-lg font-medium text-blue-100 max-w-xl leading-relaxed opacity-90 drop-shadow-lg">
+          <p className="mt-4 md:mt-6 text-sm sm:text-base md:text-lg font-medium text-blue-100 max-w-xl leading-relaxed opacity-90 drop-shadow-lg">
              บางครั้ง “ตั๋วที่ถูกที่สุด” อาจไม่ใช่ “ตั๋วที่เหมาะที่สุด” <br/>
              ให้ทีมงานช่วยดูแลคุณตั้งแต่เริ่มต้นจนถึงวันเดินทาง
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <button className="px-10 py-4 bg-white text-blue-900 font-black rounded-xl shadow-2xl transition-all hover:bg-blue-50 hover:translate-y-[-2px]">
-              เช็กราคาฟรี
-            </button>
+          <div className="mt-8 md:mt-10 flex flex-col sm:flex-row flex-wrap gap-4">
             <a 
-              href={settings.lineUrl || `https://line.me/ti/p/${settings.lineId.replace('@', '')}`}
+              href="#contact"
+              className="px-8 md:px-10 py-3 md:py-4 bg-white text-blue-900 font-black rounded-xl shadow-2xl transition-all hover:bg-blue-50 hover:translate-y-[-2px] flex items-center justify-center text-sm md:text-base"
+            >
+              เช็กราคาฟรี
+            </a>
+            <a 
+              href={settings.lineUrl || `https://line.me/ti/p/${settings.lineId?.replace('@', '') || ''}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-10 py-4 bg-blue-600 text-white font-black rounded-xl shadow-2xl transition-all hover:bg-blue-700 hover:translate-y-[-2px] flex items-center gap-2"
+              className="px-8 md:px-10 py-3 md:py-4 bg-[#06C755] text-white font-black rounded-xl shadow-2xl transition-all hover:brightness-110 hover:translate-y-[-2px] flex items-center justify-center gap-3 text-sm md:text-base"
             >
-              ปรึกษาเราฟรี!
+              <img 
+                src="https://thegloryworldvisatravel.com/wp-content/uploads/2026/05/line-icon.png" 
+                alt="LINE" 
+                className="w-6 h-6 object-contain"
+              />
+              ปรึกษาฟรี!
             </a>
           </div>
         </motion.div>
 
-        {/* Featured Promo Card - Stays Static or Dynamic */}
+        {/* Featured Promo Card - Redesigned */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.9, x: 30 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="hidden w-full max-w-sm rounded-[32px] bg-white/10 p-8 backdrop-blur-xl border border-white/20 lg:block"
+          className="hidden w-full max-w-sm rounded-[40px] bg-white/5 p-1 backdrop-blur-2xl border border-white/20 lg:block overflow-hidden relative group shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
         >
-          <div className="text-[10px] uppercase tracking-widest mb-2 opacity-50 text-white font-black text-center">Featured Offer</div>
-          <div className="text-3xl font-black text-white mb-1 text-center">Swiss Alps</div>
-          <div className="text-lg font-bold text-blue-400 mb-6 text-center">Starts 45,XXX.-</div>
-          
-          <div className="space-y-4">
-             <div className="flex items-center gap-3 text-base font-bold text-white/80">
-                <div className="h-2 w-2 rounded-full bg-blue-500" />
-                ช่วยเลือกไฟลท์สำหรับยื่นวีซ่า
-             </div>
-             <div className="flex items-center gap-3 text-base font-bold text-white/80">
-                <div className="h-2 w-2 rounded-full bg-blue-500" />
-                จองโรงแรม ประกันเดินทาง
-             </div>
-             <div className="flex items-center gap-3 text-base font-bold text-white/80">
-                <div className="h-2 w-2 rounded-full bg-blue-500" />
-                ดูแลตลอด 24 ชั่วโมง
-             </div>
+          <div className="bg-slate-900/40 rounded-[38px] overflow-hidden p-7 border border-white/5 h-full flex flex-col">
+            <div className="absolute inset-0 z-0">
+               <img 
+                 src={randomPromo.img} 
+                 alt={randomPromo.city} 
+                 className="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-1000"
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent" />
+            </div>
+            
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="flex justify-between items-start mb-6">
+                <span className="px-3 py-1 rounded-full bg-blue-500 text-[10px] font-black uppercase tracking-tighter text-white shadow-lg shadow-blue-500/50 animate-pulse">
+                  Flash Deal
+                </span>
+                <div className="bg-white/10 backdrop-blur-md p-2 rounded-xl border border-white/10">
+                  <Plane className="text-white" size={16} />
+                </div>
+              </div>
+
+              <div className="mb-8 text-center sm:text-left">
+                <h3 className="text-4xl font-black text-white mb-2 tracking-tight group-hover:text-blue-400 transition-colors">
+                  {randomPromo.city}
+                </h3>
+                <div className="inline-flex items-end gap-2">
+                  <span className="text-[11px] text-slate-400 font-bold uppercase mb-1">Starting from</span>
+                  <span className="text-3xl font-black text-blue-400 drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">
+                    {randomPromo.price}
+                  </span>
+                </div>
+              </div>
+              
+              <div className="space-y-4 mb-8">
+                {[
+                  "ช่วยเลือกไฟลท์สำหรับยื่นวีซ่า",
+                  "จองโรงแรม ประกันเดินทาง",
+                  "ดูแลตลอด 24 ชั่วโมง"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-sm font-bold text-white/90">
+                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+                      <ChevronRight size={12} className="text-blue-400" />
+                    </div>
+                    {item}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-auto">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {randomPromo.tags.map(tag => (
+                    <span key={tag} className="text-[9px] px-2.5 py-1 rounded-lg bg-white/5 text-slate-300 border border-white/10 font-black uppercase tracking-widest">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <a 
+                  href={settings.lineUrl || `https://line.me/ti/p/${settings.lineId?.replace('@', '') || ''}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-4 bg-white text-slate-900 font-extrabold rounded-2xl flex items-center justify-center gap-2 hover:bg-blue-400 hover:text-white transition-all active:scale-95 shadow-xl shadow-white/5"
+                >
+                  DETAILS & BOOKING
+                  <ArrowUpRight size={18} />
+                </a>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

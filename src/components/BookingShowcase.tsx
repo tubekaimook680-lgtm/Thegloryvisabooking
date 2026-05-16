@@ -1,7 +1,10 @@
 import { motion } from 'motion/react';
 import { Plane, Hotel, ChevronRight, Globe2 } from 'lucide-react';
+import { useSettings } from '../lib/useSettings';
 
 export default function BookingShowcase() {
+  const { settings } = useSettings();
+  const lineLink = settings.lineUrl || `https://line.me/ti/p/${settings.lineId?.replace('@', '') || ''}`;
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-8">
@@ -36,7 +39,7 @@ export default function BookingShowcase() {
           >
             <div className="absolute inset-0">
               <img 
-                src="https://images.unsplash.com/photo-1436491865332-7a61a109c05d?q=80&w=2070&auto=format&fit=crop" 
+                src="https://thegloryworldvisatravel.com/wp-content/uploads/2026/05/e03c14c4-819e-4804-8f09-214653cf66e1.png" 
                 alt="Global Flights"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -60,12 +63,15 @@ export default function BookingShowcase() {
                 เดินทางไปทุกที่ทั่วโลกด้วยตั๋วรราคาพิเศษ พร้อมบริการดูแลเส้นทางที่คุ้มค่าที่สุดสำหรับคุณ
               </p>
               
-              <motion.button 
+              <motion.a 
+                href={lineLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ gap: '1.5rem' }}
-                className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-2xl font-black text-sm group-hover:bg-white group-hover:text-slate-900 transition-all"
+                className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-2xl font-black text-sm group-hover:bg-white group-hover:text-slate-900 transition-all inline-flex"
               >
                 BOOK YOUR FLIGHT <ChevronRight size={18} />
-              </motion.button>
+              </motion.a>
             </div>
             
             {/* Decorative Globe Icon */}
@@ -108,12 +114,15 @@ export default function BookingShowcase() {
                 เราคัดสรรที่พักที่ดีที่สุดในราคาที่คุ้มค่า ตั้งแต่ระดับประหยัดไปจนถึงระดับ Luxury 5 ดาว
               </p>
               
-              <motion.button 
+              <motion.a 
+                href={lineLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ gap: '1.5rem' }}
-                className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-2xl font-black text-sm group-hover:bg-white group-hover:text-slate-900 transition-all"
+                className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-2xl font-black text-sm group-hover:bg-white group-hover:text-slate-900 transition-all inline-flex"
               >
                 FIND YOUR STAY <ChevronRight size={18} />
-              </motion.button>
+              </motion.a>
             </div>
 
             {/* Decorative Elements */}

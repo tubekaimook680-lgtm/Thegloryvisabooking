@@ -8,7 +8,7 @@ const BRANCHES = [
     address: '64/29 แขวงประเวศ เขตประเวศ กรุงเทพมหานคร 10250',
     phone: '08x-xxx-xxxx',
     hours: 'จันทร์ - ศุกร์: 09:00 - 18:00',
-    image: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://thegloryworldvisatravel.com/wp-content/uploads/2026/05/bangkok.png'
   },
   {
     city: 'เชียงใหม่',
@@ -16,7 +16,7 @@ const BRANCHES = [
     address: 'ย่านนิมมานเหมินท์ อ.เมือง จ.เชียงใหม่',
     phone: '08x-xxx-xxxx',
     hours: 'จันทร์ - ศุกร์: 09:00 - 18:00',
-    image: 'https://images.unsplash.com/photo-1590233735500-087095f9037a?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://thegloryworldvisatravel.com/wp-content/uploads/2026/05/chiang-mai.png'
   },
   {
     city: 'พัทยา',
@@ -24,7 +24,7 @@ const BRANCHES = [
     address: 'ถนนเลียบชายหาด อ.บางละมุง จ.ชลบุรี',
     phone: '08x-xxx-xxxx',
     hours: 'จันทร์ - ศุกร์: 09:00 - 18:00',
-    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://thegloryworldvisatravel.com/wp-content/uploads/2026/05/pattaya.png'
   }
 ];
 

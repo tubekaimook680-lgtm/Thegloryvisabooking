@@ -43,12 +43,14 @@ export default function Navbar() {
           />
           <div className="flex flex-col leading-tight">
             <span className={cn(
-              "text-base md:text-lg font-black uppercase tracking-tight transition-colors text-slate-900"
+              "text-base md:text-lg font-black uppercase tracking-tight transition-colors",
+              isScrolled ? "text-black" : "text-white"
             )}>
               {settings.siteName}
             </span>
             <span className={cn(
-              "text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] transition-colors text-blue-600"
+              "text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] transition-colors",
+              isScrolled ? "text-blue-600" : "text-white"
             )}>
               {settings.siteAccent}
             </span>
@@ -56,7 +58,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -95,7 +97,7 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           className={cn(
-            "rounded-lg p-2 md:hidden transition-colors",
+            "rounded-lg p-2 lg:hidden transition-colors",
             isScrolled ? "text-slate-900" : "text-white"
           )}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -106,7 +108,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-0 left-0 h-screen w-full bg-white p-8 md:hidden">
+        <div className="absolute top-0 left-0 h-screen w-full bg-white p-8 lg:hidden">
           <div className="flex justify-end">
             <button onClick={() => setIsMobileMenuOpen(false)}>
               <X size={32} />
