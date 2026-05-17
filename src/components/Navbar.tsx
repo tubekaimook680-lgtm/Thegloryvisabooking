@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Plane, Hotel, Menu, X, PhoneCall } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
 import { useSettings } from '../lib/useSettings';
 
@@ -107,31 +108,64 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-0 left-0 h-screen w-full bg-white p-8 lg:hidden">
-          <div className="flex justify-end">
-            <button onClick={() => setIsMobileMenuOpen(false)}>
-              <X size={32} />
-            </button>
-          </div>
-          <div className="mt-12 flex flex-col gap-6 text-center">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="absolute top-0 left-0 h-screen w-full bg-white p-8 lg:hidden z-50 overflow-y-auto"
+          >
+            <div className="flex justify-end">
+              <button 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-bold text-slate-900"
+                className="p-2 rounded-xl bg-slate-50 text-slate-900 border border-slate-100"
               >
-                {link.name}
-              </a>
-            ))}
-            <hr />
-            <a href={`tel:${settings.phone}`} className="text-xl font-bold text-blue-600">
-              {settings.phone}
-            </a>
-          </div>
-        </div>
-      )}
+                <X size={24} />
+              </button>
+            </div>
+            
+            <div className="mt-12 flex flex-col gap-6 text-center">
+              {navLinks.map((link, idx) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + idx * 0.05 }}
+                  className="text-3xl font-black text-slate-900 tracking-tight hover:text-blue-600 transition-colors"
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+              
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="mt-8 pt-8 border-t border-slate-100"
+              >
+                <div className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-4 text-center">Contact Us</div>
+                <a href={`tel:${settings.phone}`} className="text-2xl font-black text-blue-600">
+                  {settings.phone}
+                </a>
+                
+                <div className="mt-12 flex flex-col gap-3">
+                   <Link
+                      to="/admin/login"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="w-full rounded-2xl bg-slate-900 py-4 text-white font-black uppercase tracking-widest text-sm shadow-xl shadow-slate-200"
+                    >
+                      ADMIN LOGIN
+                    </Link>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

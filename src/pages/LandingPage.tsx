@@ -43,10 +43,10 @@ export default function LandingPage() {
         href={settings.lineUrl || `https://line.me/ti/p/${settings.lineId?.replace('@', '') || ''}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 flex items-center gap-2 rounded-full bg-white p-1.5 pr-4 text-[#06C755] shadow-2xl border border-[#06C755]/10 transition-all hover:scale-105 active:scale-95 group"
+        className="fixed bottom-8 right-8 z-50 flex items-center gap-2 rounded-full bg-white p-1.5 sm:pr-4 text-[#06C755] shadow-2xl border border-[#06C755]/10 transition-all hover:scale-105 active:scale-95 group"
       >
         <img src="https://thegloryworldvisatravel.com/wp-content/uploads/2026/05/line-app-logo-line-app-logo-transparent-line-app-icon-transparent-free-free-png.webp" alt="Line" className="h-8 w-8" />
-        <span className="font-black text-xs whitespace-nowrap">ปรึกษาฟรี!</span>
+        <span className="hidden sm:block font-black text-xs whitespace-nowrap">ปรึกษาฟรี!</span>
       </a>
     </div>
   );
