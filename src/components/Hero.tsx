@@ -123,23 +123,14 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Featured Promo Card - Redesigned */}
+        {/* Featured Promo Card - Redesigned as Glass Card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9, x: 30 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="hidden w-full max-w-sm rounded-[40px] bg-white/5 p-1 backdrop-blur-2xl border border-white/20 lg:block overflow-hidden relative group shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+          className="hidden w-full max-w-sm rounded-[40px] bg-white/10 p-1 backdrop-blur-3xl border border-white/30 lg:block overflow-hidden relative group shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
         >
-          <div className="bg-slate-900/40 rounded-[38px] overflow-hidden p-7 border border-white/5 h-full flex flex-col">
-            <div className="absolute inset-0 z-0">
-               <img 
-                 src={randomPromo.img} 
-                 alt={randomPromo.city} 
-                 className="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-1000"
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent" />
-            </div>
-            
+          <div className="bg-slate-950/20 rounded-[38px] overflow-hidden p-7 border border-white/10 h-full flex flex-col backdrop-blur-sm">
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex justify-between items-start mb-6">
                 <span className="px-3 py-1 rounded-full bg-blue-500 text-[10px] font-black uppercase tracking-tighter text-white shadow-lg shadow-blue-500/50 animate-pulse">
@@ -154,12 +145,6 @@ export default function Hero() {
                 <h3 className="text-4xl font-black text-white mb-2 tracking-tight group-hover:text-blue-400 transition-colors">
                   {randomPromo.city}
                 </h3>
-                <div className="inline-flex items-end gap-2">
-                  <span className="text-[11px] text-slate-400 font-bold uppercase mb-1">Starting from</span>
-                  <span className="text-3xl font-black text-blue-400 drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">
-                    {randomPromo.price}
-                  </span>
-                </div>
               </div>
               
               <div className="space-y-4 mb-8">

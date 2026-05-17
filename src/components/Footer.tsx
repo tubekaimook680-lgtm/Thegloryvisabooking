@@ -63,9 +63,13 @@ export default function Footer() {
             <div className="mt-6 rounded-2xl bg-slate-50 p-6 border border-slate-100">
               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">TAT LICENSE</p>
               <p className="mt-1 text-lg font-black text-slate-900">{settings.tatNo}</p>
-              <div className="mt-4 flex flex-col gap-1">
-                <span className="text-[10px] text-slate-400">LINE ID: {settings.lineId}</span>
-                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(settings.lineUrl || `https://line.me/ti/p/${settings.lineId.replace('@', '')}`)}`} alt="QR" className="h-24 w-24 rounded-lg bg-white p-1" />
+              <div className="mt-6 pt-4 border-t border-slate-200/50 flex flex-col items-start gap-3">
+                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Accredited Agent</span>
+                <img 
+                  src="https://aircargoweek.com/wp-content/uploads/2015/06/IATA_Logo.svg_-768x494.png.webp" 
+                  alt="IATA Accredited" 
+                  className="h-10 w-auto object-contain brightness-0 opacity-70 hover:opacity-100 transition-opacity" 
+                />
               </div>
             </div>
           </div>
