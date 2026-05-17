@@ -8,7 +8,7 @@ export const promos = [
   {
     city: 'Seoul, South Korea',
     price: '14,XXX THB',
-    img: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=2130&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?q=80&w=2070&auto=format&fit=crop',
     tags: ['Promotion', 'Visa Support'],
   },
   {

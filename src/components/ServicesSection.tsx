@@ -6,7 +6,8 @@ import {
   Clock, 
   ShieldCheck, 
   BookOpen, 
-  Users 
+  Users,
+  Map
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -38,7 +39,7 @@ const SERVICES = [
   {
     icon: FileCheck,
     title: 'Document Prep',
-    description: 'บริการแปลเอกสาร รับรองเอกสารกระทรวงต่างประเทศ (Legalization) และเตรียมแบบฟอร์มคำร้องอย่างถูกต้องแม่นยำ',
+    description: 'บริการแปลเอกสาร รับรองเอกสารกระทรวงต่างประเทศ (Legalization) และเตรียมแบบฟอร์มคำถูกต้องแม่นยำ',
     color: 'teal'
   },
   {
@@ -52,6 +53,12 @@ const SERVICES = [
     title: 'Travel Insurance',
     description: 'บริการซื้อประกันการเดินทางที่ตรงตามข้อกำหนดของสถานทูต เพื่อความคุ้มครองสูงสุดและเป็นหลักประกันในการยื่นวีซ่า',
     color: 'rose'
+  },
+  {
+    icon: Map,
+    title: 'Custom Trip Design',
+    description: 'ออกแบบแผนการเดินทางเฉพาะบุคคล (Custom Itinerary) พร้อมแนะนำจุดเช็คอินยอดฮิตและที่พักทำเลดีในราคาคุ้มค่า',
+    color: 'amber'
   }
 ];
 
@@ -107,6 +114,7 @@ export default function ServicesSection() {
                 service.color === 'teal' && "bg-teal-50 text-teal-600",
                 service.color === 'emerald' && "bg-emerald-50 text-emerald-600",
                 service.color === 'rose' && "bg-rose-50 text-rose-600",
+                service.color === 'amber' && "bg-amber-50 text-amber-600",
               )}>
                 <service.icon size={30} strokeWidth={2.5} />
               </div>
